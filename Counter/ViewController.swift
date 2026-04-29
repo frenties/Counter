@@ -8,12 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var pressButton: UIButton!
+    
+    @IBOutlet weak var counter: UILabel!
+    private var counterButton = 0
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        counter.text = String(counterButton)
+        pressButton.setTitle("Значение счётчика: \(counter.text!)", for: .normal)
     }
-
-
+    
+    @IBAction func counterTouchDown(_ sender: Any) {
+        counterButton += 1
+        
+        viewDidLoad()
+    }
+    
 }
 
