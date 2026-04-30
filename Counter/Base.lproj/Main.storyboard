@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Counter2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="+"/>
                                 <connections>
-                                    <action selector="buttonPlusTouchDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bYx-k1-OaT"/>
+                                    <action selector="plusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wiA-UD-5Ed"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Значение счётчика:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fd-kn-fS7">
@@ -42,7 +42,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Обнулить"/>
                                 <connections>
-                                    <action selector="resetTouchDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dc2-DZ-BBO"/>
+                                    <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CZM-pq-apB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6L-jr-DL2">
@@ -53,7 +53,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="-"/>
                                 <connections>
-                                    <action selector="buttonMinusTouchDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ytq-jw-YpZ"/>
+                                    <action selector="minusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u2O-ep-Vv1"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" text="История изменений:" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-Ir-dIq">
@@ -69,11 +69,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="buttonMinus" destination="o6L-jr-DL2" id="lmi-lb-DUr"/>
-                        <outlet property="buttonPlus" destination="wZh-1Y-5By" id="fkx-uf-1OI"/>
-                        <outlet property="buttonToReset" destination="vkM-rN-q9H" id="aZN-QE-tN7"/>
-                        <outlet property="changeHistory" destination="gFC-Ir-dIq" id="3Bp-5q-A3S"/>
+                        <outlet property="changeHistoryTextView" destination="gFC-Ir-dIq" id="XAb-rv-Vpg"/>
                         <outlet property="counterLabel" destination="8fd-kn-fS7" id="t7c-rs-puW"/>
+                        <outlet property="minusButton" destination="o6L-jr-DL2" id="NSc-A7-5hC"/>
+                        <outlet property="plusButton" destination="wZh-1Y-5By" id="Yjm-3U-UnM"/>
+                        <outlet property="resetButton" destination="vkM-rN-q9H" id="Urx-ME-epJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
