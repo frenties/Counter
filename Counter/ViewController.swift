@@ -1,67 +1,62 @@
-//
-//  ViewController.swift
-//  Counter
-//
-//  Created by Ксения Ягодкина on 28.04.2026.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet private weak var counterLabel: UILabel!
     
-    @IBOutlet weak var buttonPlus: UIButton!
+    @IBOutlet private weak var plusButton: UIButton!
     
-    @IBOutlet weak var buttonMinus: UIButton!
+    @IBOutlet private weak var minusButton: UIButton!
     
-    @IBOutlet weak var buttonToReset: UIButton!
+    @IBOutlet private weak var resetButton: UIButton!
     
-    @IBOutlet weak var changeHistory: UITextView!
+    @IBOutlet private weak var changeHistoryTextView: UITextView!
     
-    private var counterOf:Int = 0
-    private let changeHistoryHeader = "Историй изменений: \n"
+    private var counterValue:Int = 0
+    private let changeHistoryHeader = "История изменений: \n"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        counterLabel.text = String(counterOf)
-        changeHistory.text = changeHistoryHeader
-        changeHistory.isEditable = false
+        counterLabel.text = String(counterValue)
+        changeHistoryTextView.text = changeHistoryHeader
+        changeHistoryTextView.isEditable = false
         
     }
     
     private func updateCounter() {
-        counterLabel.text = String("Значение счётчика: \(counterOf)")
+        counterLabel.text = "Значение счётчика: \(counterValue)"
+    }
+    private func getCurrentDateTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d-M-yyyy H:mm:ss"
+        
+        return dateFormatter.string(from: Date())
+        
     }
     
-    @IBAction func buttonPlusTouchDown(_ sender: Any) {
-        counterOf += 1
+    
+    @IBAction private func plusButtonTapped(_ sender: Any) {
+        counterValue += 1
         updateCounter()
-        changeHistory.text += "[\(getCurrentDateTime())]: Значение изменено на +1 \n"
+        changeHistoryTextView.text += "[\(getCurrentDateTime())]: Значение изменено на +1 \n"
     }
     
-    @IBAction func buttonMinusTouchDown(_ sender: Any) {
-        if counterOf <= 0 {
+    @IBAction private func minusButtonTapped(_ sender: Any) {
+        if counterValue <= 0 {
             counterLabel.text = "Некорректное значение"
-            changeHistory.text += "[\(getCurrentDateTime())]: Попытка уменьшить значение счётчика ниже 0 \n"
+            changeHistoryTextView.text += "[\(getCurrentDateTime())]: Попытка уменьшить значение счётчика ниже 0 \n"
         } else {
-            counterOf -= 1
+            counterValue -= 1
             updateCounter()
-            changeHistory.text += "[\(getCurrentDateTime())]: Значение изменено на -1 \n"
+            changeHistoryTextView.text += "[\(getCurrentDateTime())]: Значение изменено на -1 \n"
         }
     }
     
-    @IBAction func resetTouchDown(_ sender: Any) {
-        counterOf = 0
-        counterLabel.text = String(counterOf)
-        changeHistory.text += "[\(getCurrentDateTime())]: Значение сброшено \n"
+    @IBAction private func resetButtonTapped(_ sender: Any) {
+        counterValue = 0
+        counterLabel.text = String(counterValue)
+        changeHistoryTextView.text += "[\(getCurrentDateTime())]: Значение сброшено \n"
         
     }
     
-    private func getCurrentDateTime() -> String {
-        let formatTime = DateFormatter()
-        formatTime.dateFormat = "d-M-yyyy H:mm:ss"
-        
-        return formatTime.string(from: Date())
-        
-    }
+    
 }
